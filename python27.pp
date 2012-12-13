@@ -34,10 +34,29 @@ exec {"rpmbuild":
 	command		=>	"QA_RPATHS=$[ 0x001|0x0010] rpmbuild -bb /usr/src/redhat/SPECS/python27-2.7.2.spec",
 	before		=>	Package["python27"],
 	timeout		=>	0,
+	provider	=>	shell,
 }
 
 package {"python27":
 	ensure		=>	"installed",
 	provider	=>	"rpm",
-	source		=>	"/usr/src/redhat/RPMS/x86_64/python27*.rpm"
+	source		=>	"/usr/src/redhat/RPMS/x86_64/python27-2.7.2-milford-.x86_64.rpm"
+}
+
+package {"python27-tkinter":
+	ensure		=>	"installed",
+	provider	=>	"rpm",
+	source		=>	"/usr/src/redhat/RPMS/x86_64/python27-tkinter-2.7.2-milford-.x86_64.rpm"
+}
+
+package {"python27-devel":
+	ensure		=>	"installed",
+	provider	=>	"rpm",
+	source		=>	"/usr/src/redhat/RPMS/x86_64/python27-devel-2.7.2-milford-.x86_64.rpm"
+}
+
+package {"python27-debuginfo":
+	ensure		=>	"installed",
+	provider	=>	"rpm",
+	source		=>	"/usr/src/redhat/RPMS/x86_64/python27-debuginfo-2.7.2-milford-.x86_64.rpm"
 }
